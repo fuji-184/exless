@@ -10,17 +10,15 @@ const Login = () => {
   const navigate = useNavigate()
   
   useEffect(()=>{
-    if(localStorage.getItem('token')){
-        navigate(`/dashboard`, { replace: true });
-      }
-  }, [])
+    if (localStorage.getItem('token')){
+    navigate(`/dashboard`, { replace: true });
+    }
+    }, [])
+  
   
   const [formData, setFormData] = useState({});
   const [ data, setData ] = useState()
   
-  useEffect(()=>{
-    console.log(localStorage.getItem('token'))
-  }, [])
   
   const handleChange = async (e) => {
     const { name, value } = e.target;
@@ -29,6 +27,7 @@ const Login = () => {
   
   const handleLogin = async (e) => {
     e.preventDefault()
+    navigate(`/dashboard`, { replace: true });
     await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
       method: 'POST',
       headers: {
@@ -40,9 +39,7 @@ const Login = () => {
     .then((data) => {
       setData(data)
       localStorage.setItem('token', data.token);
-      if(localStorage.getItem('token')){
-        navigate(`/dashboard`, { replace: true });
-      }
+   
     })
   }
   

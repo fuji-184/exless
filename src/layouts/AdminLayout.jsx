@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 
 const AdminLayout = () => {
   
+  const navigate = useNavigate()
+  
+  useEffect(()=>{
+    if(!localStorage.getItem('token')){
+      navigate(`/admin_login`, { replace: true });
+    }
+  }, [])
 
   return (
     <>

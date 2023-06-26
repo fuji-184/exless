@@ -91,7 +91,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: localStorage.getItem('token') ? <AdminLayout /> : <Navigate to="/admin_login" />,
+    /* element: localStorage.getItem('token') ? <AdminLayout /> : <Navigate to="/admin_login" />, */
+    element: <AdminLayout />,
     children: [
       {
         path: "/dashboard",
@@ -161,7 +162,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin_login",
-    element: <Login />,
+    element: localStorage.getItem('token') ? <Navigate to="/dashboard" /> : <Login />,
   },
   
   {
