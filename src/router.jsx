@@ -43,9 +43,6 @@ import EditArtikel from './pages/admin/artikel/EditArtikel'
 import AddCommunity from './pages/admin/community/AddCommunity'
 import CommunityData from './pages/admin/community/CommunityData'
 
-// auth
-import Logins from './pages/auth/Logins'
-
 
 const router = createBrowserRouter([
   {
@@ -170,10 +167,6 @@ const router = createBrowserRouter([
   {
     path: '/yt',
     element: <Yt />
-  },
-  {
-    path: '/login',
-    element: <Logins />
   }
   
 ]);
