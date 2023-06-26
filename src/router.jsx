@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 //import layouts
 import AdminLayout from './layouts/AdminLayout'
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <AdminLayout />,
+    element: localStorage.getItem('token') ? <AdminLayout /> : <Navigate to="/admin_login" />,
     children: [
       {
         path: "/dashboard",
