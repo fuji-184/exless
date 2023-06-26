@@ -17,7 +17,7 @@ const AddCommunity = () => {
   const gambar = true
   
   
-  const url = 'http://localhost:3000/community';
+  const url = `${import.meta.env.VITE_BACKEND_URL}/community`;
   const inputs = [
     { name: 'foto', label: 'Foto', type: 'file' },
     { name: 'nama', label: 'Nama', type: 'text' },

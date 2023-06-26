@@ -5,7 +5,7 @@ import Table from '../../../utilities/Table';
 import AddButton from "../../../utilities/AddButton";
 
 const ArtikelData = () => {
-  const url = 'http://localhost:3000/artikel';
+  const url = `${import.meta.env.VITE_BACKEND_URL}/artikel`;
   const method = 'GET';
   const contentType = 'application/json';
   

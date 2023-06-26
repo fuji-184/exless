@@ -27,7 +27,7 @@ useEffect(() => {
 
   
   const fetchData = async () => {
-    await fetch(`http://localhost:3000/artikel/${id}`, {
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/artikel/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ useEffect(() => {
     
     console.log(articleData)
 
-    fetch('http://localhost:3000/artikel', {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/artikel`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ import Table from '../../../utilities/Table';
 import AddButton from "../../../utilities/AddButton";
 
 const VideoData = () => {
-  const url = 'http://localhost:3000/video';
+  const url = `${import.meta.env.VITE_BACKEND_URL}/video`
   const method = 'GET';
   const contentType = 'application/json';
   
@@ -16,7 +16,7 @@ const VideoData = () => {
   
   const handleDeleteLink = async (id) => {
     try {
-      await fetch(`http://localhost:3000/video/${id}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/video/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

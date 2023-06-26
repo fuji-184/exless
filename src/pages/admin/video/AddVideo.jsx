@@ -13,7 +13,7 @@ const AddVideo = () => {
 
   const method = 'POST';
   const cekFile = true
-  const url = 'http://localhost:3000/video';
+  const url = `${import.meta.env.VITE_BACKEND_URL}/video`
   const inputs = [
     { name: 'title', label: 'Judul', type: 'text' },
     { name: 'description', label: 'Deskripsi', type: 'text' },

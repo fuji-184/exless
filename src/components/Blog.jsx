@@ -17,7 +17,7 @@ const Blog = () => {
   }, [data])
   
   const fetchData = async () => {
-    await fetch('http://localhost:3000/artikel', {
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/artikel`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

@@ -13,7 +13,7 @@ const Video = () => {
   }, [videos])
   
   const fetchData = async () => {
-    await fetch('http://localhost:3000/video', {
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/video`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

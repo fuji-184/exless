@@ -6,7 +6,7 @@ const EditVideo = () => {
   
   // const { id } = useParams();
   
-  const id = '-NYMsTxJAM0K9qvWNOed'
+  const id = useParams()
   
   const cekFile = false
   
@@ -16,7 +16,7 @@ const EditVideo = () => {
   
   const contentType = 'application/json'
   
-  const url = `http://localhost:3000/video/${id}`
+  const url = `${import.meta.env.VITE_BACKEND_URL}/video/${id}`
   
   const method = 'PUT'
   
@@ -35,7 +35,7 @@ const EditVideo = () => {
   const fetchDataEdit = async () => {
     console.log('Sedang Fetch')
     
-    const res = await fetch(`http://localhost:3000/video/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/video/${id}`, {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',

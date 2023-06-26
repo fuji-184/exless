@@ -5,7 +5,7 @@ import Table from '../../../utilities/Table';
 import AddButton from "../../../utilities/AddButton";
 
 const UserData = () => {
-  const url = 'http://localhost:3000/user';
+  const url = `${import.meta.env.VITE_BACKEND_URL}/user`
   const method = 'GET';
   const contentType = 'application/json';
   
@@ -16,7 +16,7 @@ const UserData = () => {
   
   const handleDeleteLink = async (id) => {
     try {
-      await fetch(`http://localhost:3000/artikel/${id}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

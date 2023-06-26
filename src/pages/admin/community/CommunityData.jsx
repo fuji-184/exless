@@ -5,7 +5,7 @@ import Table from '../../../utilities/Table';
 import AddButton from "../../../utilities/AddButton";
 
 const CommunityData = () => {
-  const url = 'http://localhost:3000/community';
+  const url = `${import.meta.env.VITE_BACKEND_URL}/community`
   const method = 'GET';
   const contentType = 'application/json';
   
@@ -16,7 +16,7 @@ const CommunityData = () => {
   
   const handleDeleteLink = async (id) => {
     try {
-      await fetch(`http://localhost:3000/artikel/${id}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/community/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
