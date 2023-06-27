@@ -1,4 +1,5 @@
 import React , { useState, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import ReactDOMServer from 'react-dom/server';
 import Blog1 from "/public/blog1.png";
 import Blog2 from "/public/blog2.png";
@@ -47,9 +48,11 @@ const Blog = () => {
     
     
           <div className="flex flex-col gap-y-[15px] py-28 " data-aos="fade-right">
-            <img className="" src="" />
+            <img className="rounded-3xl w-[640px] h-[340px]" src={data[0].thumbnail} />
             <p className="text-[20px] font-bold text-justify text-[#252641]">{data[0].judul}</p>
-            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten"></p>
+            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten">{data[0].konten.length > 100
+          ? `${data[0].konten.substring(0, 100)}...`
+          : data[0].konten}</p>
             <button className="text-left">Read More</button>
           </div>
 
@@ -68,16 +71,20 @@ const Blog = () => {
           
           
           
-          
-            <div className="flex gap-3 ">
-              <img className="w-[280px] h-[200px]" src="" />
-              <span className="flex flex-col gap-y-[10px]">
-                <p className="text-[20px] font-bold text-justify text-[#252641]">{data[0].judul}</p>
-                <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten2"></p>
-                <button className="text-left">Read More</button>
-              </span>
-            </div>
-
+{data.slice(1, 4).map((artikel, i) => (
+  <div className="flex gap-3" key={i}>
+    <img className="rounded-3xl w-[280px] h-[200px]" src={artikel.thumbnail} alt="" />
+    <span className="flex flex-col gap-y-[10px]">
+      <p className="text-[20px] font-bold text-justify text-[#252641]">
+        {artikel.judul}
+      </p>
+      <p className="text-[15px] font-normal text-justify text-[#696984]" id="konten2">{artikel.konten.length > 100
+          ? `${artikel.konten.substring(0, 100)}...`
+          : artikel.konten}</p>
+      <button className="text-left">Read More</button>
+    </span>
+  </div>
+))}
 
 
             
@@ -94,11 +101,11 @@ const Blog = () => {
         
         
         
-        <a href="/otherblog" className="mx-auto">
+        <Link to="/otherblog" className="mx-auto">
           <button className="mx-auto w-[170px] p-[10px] text-[#f48c06] border-[2px] border-[#f48c06] rounded-[20px] font-bold">
-            <a href="/otherblog">Read More</a>{" "}
+            Read More
           </button>
-        </a>
+        </Link>
       </div>
     </div>
   );

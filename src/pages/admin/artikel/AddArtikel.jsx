@@ -3,15 +3,15 @@ import React, { useState, useRef } from 'react';
 const AddArtikel = () => {
   const [judul, setTitle] = useState('');
   const [konten, setContent] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const editorRef = useRef(null);
   const fileInputRef = useRef(null);
-
-  const handleImageUpload = async (file) => {
-    setIsUploading(true);
-
+  const thumbnailRef = useRef(null);
+  
+  const handleImage = async (img) => {
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('image', img);
 
     try {
       const response = await fetch('https://api.imgbb.com/1/upload?key=0cc61493cbf363a64718706827b5ec29', {
@@ -21,7 +21,25 @@ const AddArtikel = () => {
 
       const data = await response.json();
       const imageUrl = data.data.display_url;
+      return imageUrl
+  }   catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  }
+  
+  const handleThumbnail = async (file) => {
+    try {
+    const imageUrl = await handleImage(file)
+      setThumbnail(imageUrl)
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  }
 
+  const handleImageUpload = async (file) => {
+    setIsUploading(true);
+try {
+    const imageUrl = await handleImage(file)
       const imageElement = `<img src="${imageUrl}" alt="Uploaded Image" style="max-width: 100%;">`;
       editorRef.current.focus();
       document.execCommand('insertHTML', false, imageElement);
@@ -31,11 +49,14 @@ const AddArtikel = () => {
 
     setIsUploading(false);
   };
+  
+  
 
   const handleSave = () => {
     const articleData = {
       judul,
       konten,
+      thumbnail
     };
     
     console.log(articleData)
@@ -69,6 +90,11 @@ const AddArtikel = () => {
         placeholder="Title"
         value={judul}
         onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => handleThumbnail(e.target.files[0])}
       />
       <div className="border border-gray-300 p-2 mb-4 flex">
         <div className="flex items-center">
