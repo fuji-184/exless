@@ -12,6 +12,7 @@ import Contact from './components/Contact'
 import Feature from './components/Feature'
 import NotFound from './components/NotFound'
 import Community from './pages/user/Community'
+import Register from './pages/auth/Register'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/admin/Dashboard'
 import OtherBlog from './components/OtherBlog'
@@ -42,6 +43,10 @@ import EditArtikel from './pages/admin/artikel/EditArtikel'
 // Community
 import AddCommunity from './pages/admin/community/AddCommunity'
 import CommunityData from './pages/admin/community/CommunityData'
+
+// Community : User Page
+import CommunityList from './pages/user/CommunityList'
+import CommunityPage from './pages/user/CommunityPage'
 
 
 const router = createBrowserRouter([
@@ -161,14 +166,28 @@ const router = createBrowserRouter([
     element: <NotFound />,
   },
   {
-    path: "/admin_login",
+    path: '/register',
+    element: <Register />
+  },
+  {
+    path: "/login",
     element: localStorage.getItem('token') ? <Navigate to="/dashboard" /> : <Login />,
   },
   
   {
     path: '/yt',
     element: <Yt />
-  }
+  },
+  
+  {
+    path: '/community/list',
+    element: <CommunityList />
+  },
+  
+  {
+    path: '/community/:id',
+    element: <CommunityPage />
+  },
   
 ]);
 

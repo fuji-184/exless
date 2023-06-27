@@ -8,7 +8,7 @@ const AdminLayout = () => {
   
   useEffect(()=>{
     if(!localStorage.getItem('token')){
-      navigate(`/admin_login`, { replace: true });
+      navigate(`/login`, { replace: true });
     }
   }, [])
 

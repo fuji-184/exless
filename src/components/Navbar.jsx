@@ -8,6 +8,13 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
+  const logout = () => {
+    localStorage.removeItem('idUser')
+    localStorage.removeItem('emailUser')
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+  }
 
   return (
     <nav className="bg-white w-full sticky z-50 top-0" data-aos="fade-down" data-aos-once="true">
@@ -36,6 +43,9 @@ const Navbar = () => {
               <Link to="/contact" className="text-black hover:text-[#F48C06] hover:bg-transparent px-3 py-2 rounded-md text-lg font-medium">
                 Contact
               </Link>
+              <button onClick={logout} className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
+              Logout
+            </button>
             </div>
           </div>
           <div className="md:hidden">
@@ -68,6 +78,9 @@ const Navbar = () => {
             <Link to="/contact" className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
               Contact
             </Link>
+            <button onClick={logout} className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
+              Logout
+            </button>
           </div>
         </div>
       )}

@@ -5,18 +5,17 @@ import User from "../../../public/icons/user.svg"
 import FormInput from "../../utilities/FormInput"
 import Button from "../../utilities/Button"
 
-const Login = () => {
+const Register = () => {
   
   const navigate = useNavigate()
   
   useEffect(()=>{
-    const cek = localStorage.getItem('user')
-    console.log(cek)
     if (localStorage.getItem('token')){
     navigate(`/dashboard`, { replace: true });
     }
     if (localStorage.getItem('user')){
-      navigate(`/`, { replace: true })}
+    navigate(`/`, { replace: true });
+    }
     }, [])
   
   
@@ -32,7 +31,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault()
     
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+    await fetch(`${import.meta.env.VITE_BACKEND_URL}/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -41,11 +40,9 @@ const Login = () => {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      
       setData(data)
-      if (data.token){
-      localStorage.setItem('token', data.token);
-      }
+      //localStorage.setItem('token', data.token);
       if (data.idUser){
       localStorage.setItem('idUser', data.idUser);
       }
@@ -57,9 +54,9 @@ const Login = () => {
       }
       if (localStorage.getItem('token')){
       navigate(`/dashboard`, { replace: true });
-      }
       if (localStorage.getItem('user')){
       navigate(`/`, { replace: true })}
+      }
     })
   }
   
@@ -68,13 +65,13 @@ const Login = () => {
             <img src={Background} className="h-screen w-full object-cover z-0" alt="" />
             <div className="h-screen w-full bg-white/40 absolute top-0 z-50 flex justify-center items-center">
                 <div className="w-[500px] h-fit bg-[#1A4D2E] rounded-3xl text-white flex flex-col items-center justify-start p-8 gap-4">
-                    <h1 className="font-semibold text-4xl">LOGIN</h1>
+                    <h1 className="font-semibold text-4xl">REGISTER</h1>
                     <img src={User} height={115} width={115} alt="user" />
                     <form onSubmit={handleLogin} className="flex flex-col gap-4">
                         <FormInput name='email' type='input' id='email' title='Email' onChange={handleChange} />
                         <FormInput name='password' type='password' id='password' title='Password' onChange={handleChange} />
                         <div className="w-full flex justify-center">
-                            <Button text='LOGIN' color='outline outline-white outline-1 w-[150px] rounded-xl' />
+                            <Button text='REGISTER' color='outline outline-white outline-1 w-[150px] rounded-xl' />
                         </div>
                     </form>
                 </div>
@@ -83,4 +80,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register
