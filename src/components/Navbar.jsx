@@ -79,9 +79,21 @@ const Navbar = () => {
             <Link to="/contact" className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
               Contact
             </Link>
+            {( !localStorage.getItem('emailUser') ? (
+            <Link to='/login' className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
+              Login
+            </Link> ) : ('')
+            )}
+            {( !localStorage.getItem('emailUser') ? (
+            <Link to='/register' className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
+              Register
+            </Link> ) : ('')
+            )}
+            {( localStorage.getItem('emailUser') ? (
             <button onClick={logout} className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
               Logout
-            </button>
+            </button> ) : ('')
+            )}
           </div>
         </div>
       )}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Background from '../../assets/communitybg.jpg'
 import Button from '../../utilities/Button'
 
@@ -9,7 +10,9 @@ const Community = () => {
                 <div className="max-w-[768px] flex flex-col gap-4 text-white">
                     <h1 className='text-5xl font-bold'>Bijaklah Dalam Mengelola Makanan</h1>
                     <p>Jutaan orang sudah bergabung bersama Exless dan mampu mengatasi permasalahannya, sekarang giliran anda !</p>
+                    <Link to="/community/list">
                     <Button text='JOIN US' color='bg-[#f48c06]' />
+                    </Link>
                 </div>
             </div>
         </div>

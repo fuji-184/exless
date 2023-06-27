@@ -9,6 +9,10 @@ const CommunityList = () => {
     fetchData()
   }, [])
   
+  useEffect(()=>{
+    console.log(data)
+  }, [data])
+  
   const fetchData = async () => {
     await fetch(`${import.meta.env.VITE_BACKEND_URL}/community`, {
       method: 'GET',
@@ -18,6 +22,7 @@ const CommunityList = () => {
     })
     .then((res) => res.json())
     .then((resData) => {
+      console.log(resData)
        const newData = Object.keys(resData).map((id) => ({ ...resData[id], id }));
        setData(newData);
     })
