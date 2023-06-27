@@ -12,6 +12,9 @@ const Sidebar = () => {
 
   const logout = () => {
     klik()
+    localStorage.removeItem('idUser')
+    localStorage.removeItem('emailUser')
+    localStorage.removeItem('user')
     localStorage.removeItem('token')
     if(!localStorage.getItem('token')){
         navigate(`/admin_login`, { replace: true });

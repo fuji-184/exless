@@ -14,6 +14,7 @@ const Navbar = () => {
     localStorage.removeItem('emailUser')
     localStorage.removeItem('user')
     localStorage.removeItem('token')
+    
   }
 
   return (

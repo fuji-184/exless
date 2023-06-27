@@ -30,6 +30,10 @@ const Blog = () => {
     })
   }
   
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <div id="blog" className="flex flex-col gap-[130px] pt-16 bg-[#FAF3EC]">
       <div className="w-[75%] mx-auto flex justify-center flex-col gap-y-[30px] ">
@@ -38,20 +42,19 @@ const Blog = () => {
     
     
     
-    {data > 0 && (
+
     
     
     
           <div className="flex flex-col gap-y-[15px] py-28 " data-aos="fade-right">
-            <img className="" src={Blog1} />
+            <img className="" src="" />
             <p className="text-[20px] font-bold text-justify text-[#252641]">{data[0].judul}</p>
-            <p className="text-[15px]  font-normal text-justify text-[#696984]">{data[0].konten}</p>
+            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten"></p>
             <button className="text-left">Read More</button>
           </div>
 
 
 
-)}
 
 
 
@@ -67,10 +70,10 @@ const Blog = () => {
           
           
             <div className="flex gap-3 ">
-              <img className="w-[280px] h-[200px]" src={Blog2} />
+              <img className="w-[280px] h-[200px]" src="" />
               <span className="flex flex-col gap-y-[10px]">
-                <p className="text-[20px] font-bold text-justify text-[#252641]">Tackling the Global Food Waste Crisis: Solutions for a Sustainable Future</p>
-                <p className="text-[15px]  font-normal text-justify text-[#696984]">In this article, we explore the serious problems facing the world in terms of excessive food waste....</p>
+                <p className="text-[20px] font-bold text-justify text-[#252641]">{data[0].judul}</p>
+                <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten2"></p>
                 <button className="text-left">Read More</button>
               </span>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue, off, push } from 'firebase/database';
 
@@ -19,10 +19,14 @@ const database = getDatabase();
 
 const CommunityPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
   const [messages, setMessages] = useState([]);
   const [chatBaru, setNewMessage] = useState('');
 
   useEffect(() => {
+    if (!localStorage.getItem('userEmail')){
+    navigate(`/login`, { replace: true });
+    }
     const messagesRef = ref(database, `/Community/${id}/Chat`);
 
     const handleData = (snapshot) => {

@@ -54,9 +54,9 @@ const Register = () => {
       }
       if (localStorage.getItem('token')){
       navigate(`/dashboard`, { replace: true });
+      }
       if (localStorage.getItem('user')){
       navigate(`/`, { replace: true })}
-      }
     })
   }
   
