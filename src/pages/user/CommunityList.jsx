@@ -20,13 +20,9 @@ const CommunityList = () => {
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      res.json()
-     // console.log(data)
-    })
+    .then((res) => res.json())
     .then((resData) => {
       console.log(resData)
-      return
        const newData = Object.keys(resData).map((id) => ({ ...resData[id], id }));
        setData(newData);
     })
