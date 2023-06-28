@@ -21,7 +21,7 @@ const CommunityList = () => {
       }
     })
     .then((res) => {
-      const data = res.json()
+      res.json()
      // console.log(data)
     })
     .then((resData) => {
