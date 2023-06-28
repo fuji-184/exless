@@ -33,7 +33,9 @@ const OtherBlog = () => {
             <img className="w-1/4 mr-4 rounded-xl" src={blog.thumbnail} alt={blog.judul} />
             <div className="flex flex-col">
               <h2 className="text-xl font-bold mb-2">{blog.judul}</h2>
-              <p className="text-gray-700 text-justify text-ellipsis overflow-hidden" dangerouslySetInnerHTML={{ __html: blog.konten }} ></p>
+              <p className="text-gray-700 text-justify text-ellipsis overflow-hidden">{blog.ringkasan.length > 100
+          ? `${blog.ringkasan.substring(0, 100)}...`
+          : blog.ringkasan}</p>
               <Link to={`/${blog.judul}`}>
               <button className="bg-[#f48c06] text-white w-[100px] h-[40px] rounded-xl hover:bg-[#252641] text-white">
                   Read More

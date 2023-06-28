@@ -50,10 +50,12 @@ const Blog = () => {
           <div className="flex flex-col gap-y-[15px] py-28 " data-aos="fade-right">
             <img className="rounded-3xl w-[640px] h-[340px]" src={data[0].thumbnail} />
             <p className="text-[20px] font-bold text-justify text-[#252641]">{data[0].judul}</p>
-            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten">{data[0].konten.length > 100
-          ? `${data[0].konten.substring(0, 100)}...`
-          : data[0].konten}</p>
+            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten">{data[0].ringkasan.length > 100
+          ? `${data[0].ringkasan.substring(0, 100)}...`
+          : data[0].ringkasan}</p>
+          <Link to={`/${data[0].judul}`}>
             <button className="text-left">Read More</button>
+          </Link>
           </div>
 
 
@@ -78,10 +80,12 @@ const Blog = () => {
       <p className="text-[20px] font-bold text-justify text-[#252641]">
         {artikel.judul}
       </p>
-      <p className="text-[15px] font-normal text-justify text-[#696984]" id="konten2">{artikel.konten.length > 100
-          ? `${artikel.konten.substring(0, 100)}...`
-          : artikel.konten}</p>
+      <p className="text-[15px] font-normal text-justify text-[#696984]" id="konten2">{artikel.ringkasan.length > 100
+          ? `${artikel.ringkasan.substring(0, 100)}...`
+          : artikel.ringkasan}</p>
+          <Link to={`/${artikel.judul}`}>
       <button className="text-left">Read More</button>
+      </Link>
     </span>
   </div>
 ))}

@@ -20,12 +20,18 @@ const CommunityList = () => {
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => res.json())
+    .then((res) => {
+      const data = res.json()
+      console.log(data)
+    })
+    /*
     .then((resData) => {
       console.log(resData)
+      return
        const newData = Object.keys(resData).map((id) => ({ ...resData[id], id }));
        setData(newData);
     })
+    */
   }
   
   const join = async (idUser, idCommunity) => {

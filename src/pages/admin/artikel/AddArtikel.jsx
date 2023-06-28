@@ -4,6 +4,7 @@ const AddArtikel = () => {
   const [judul, setTitle] = useState('');
   const [konten, setContent] = useState('');
   const [thumbnail, setThumbnail] = useState('');
+  const [ ringkasan, setRingkasan ] = useState('')
   const [isUploading, setIsUploading] = useState(false);
   const editorRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -56,7 +57,8 @@ try {
     const articleData = {
       judul,
       konten,
-      thumbnail
+      thumbnail,
+      ringkasan
     };
     
     console.log(articleData)
@@ -91,6 +93,7 @@ try {
         value={judul}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <label>Thumbnail</label>
       <input
         type="file"
         accept="image/*"
@@ -134,6 +137,13 @@ try {
         ref={editorRef}
         onInput={(e) => setContent(e.target.innerHTML)}
       ></div>
+      <input
+        type="text"
+        className="border border-gray-300 p-2 mb-4 w-full"
+        placeholder="Deskripsi Singkat"
+        value={ringkasan}
+        onChange={(e) => setRingkasan(e.target.value)}
+      />
       <button className="bg-blue-500 text-white py-2 px-4 mt-4" onClick={handleSave}>
         Save
       </button>
