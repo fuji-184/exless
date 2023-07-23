@@ -7,7 +7,6 @@ const AddArtikel = () => {
   const [isUploading, setIsUploading] = useState(false);
   const editorRef = useRef(null);
   const fileInputRef = useRef(null);
-  const thumbnailRef = useRef(null);
   
   const handleImage = async (img) => {
     const formData = new FormData();
@@ -21,16 +20,16 @@ const AddArtikel = () => {
 
       const data = await response.json();
       const imageUrl = data.data.display_url;
-      return imageUrl
-  }   catch (error) {
+      return imageUrl;
+    } catch (error) {
       console.error('Error uploading image:', error);
     }
   }
   
   const handleThumbnail = async (file) => {
     try {
-    const imageUrl = await handleImage(file)
-      setThumbnail(imageUrl)
+      const imageUrl = await handleImage(file);
+      setThumbnail(imageUrl);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
@@ -38,22 +37,19 @@ const AddArtikel = () => {
 
   const handleImageUpload = async (file) => {
     setIsUploading(true);
-try {
-    const imageUrl = await handleImage(file)
+    try {
+      const imageUrl = await handleImage(file);
       const imageElement = `<img src="${imageUrl}" alt="Uploaded Image" style="max-width: 100%;">`;
       editorRef.current.focus();
       document.execCommand('insertHTML', false, imageElement);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
-
     setIsUploading(false);
   };
   
-  
-
   const handleSave = () => {
-    const newsUrl = `${import.meta.env.VITE_FRONTEND_URL}/${title}`};
+    const newsUrl = `${import.meta.env.VITE_FRONTEND_URL}/${encodeURIComponent(title)}`;
     const articleData = {
       title,
       description,
@@ -61,7 +57,7 @@ try {
       newsUrl
     };
     
-    console.log(newsUrl)
+    console.log(articleData);
 
     fetch(`${import.meta.env.VITE_BACKEND_URL}/artikel`, {
       method: 'POST',
@@ -143,6 +139,6 @@ try {
       </button>
     </div>
   );
-;
+};
 
 export default AddArtikel;
