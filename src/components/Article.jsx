@@ -6,7 +6,8 @@ const Article = () => {
   
   const { judul } = useParams()
   
-  const [ data, setData ] = useState()
+  const [data, setData] = useState()
+  const [loading, setLoading] = useState(true);
   
   useEffect(()=>{
     fetchData()
@@ -17,22 +18,34 @@ const Article = () => {
   }, [data])
   
   const fetchData = async () => {
-    await fetch(`${import.meta.env.VITE_BACKEND_URL}/${judul}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${judul}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
       }
-    })
-    .then((res) => res.json())
-    .then((resData) => {
-      const newData = Object.values(resData)[0]
+      
+      const resData = await response.json();
+      const newData = Object.values(resData)[0];
       setData(newData);
-    })
-    console.log(data)
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    }
   }
   
-  if(!data){
-    return (<div>Loading...</div>)
+  if (loading) {
+    return (<div>Loading...</div>);
+  }
+  
+  if (!data) {
+    return (<div>Data not found</div>);
   }
   
   return (
