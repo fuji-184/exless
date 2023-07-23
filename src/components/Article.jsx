@@ -37,8 +37,8 @@ const Article = () => {
   return (
     <div className="container mx-auto">
       <div className="flex flex-col items-center mt-10 mb-11">
-        <h1 className="text-2xl font-bold mb-2">{data.judul}</h1>
-        <p className="text-lg text-gray-700 text-justify" dangerouslySetInnerHTML={{ __html: data.konten }} ></p>
+        <h1 className="text-2xl font-bold mb-2">{data.title}</h1>
+        <p className="text-lg text-gray-700 text-justify" dangerouslySetInnerHTML={{ __html: data.content }} ></p>
       </div>
     </div>
   );
