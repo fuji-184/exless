@@ -28,6 +28,7 @@ const Article = () => {
       const newData = Object.values(resData)[0]
       setData(newData);
     })
+    console.log(data)
   }
   
   if(!data){
