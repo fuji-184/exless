@@ -3,8 +3,8 @@ import React from 'react'
 const AddArticle = () => {
   return (
     <div>
-      <PageTitle title="Manage Article" />
-      <AddButton text="Article" />
+      <PageTitle title="Manage Berita" />
+      <AddButton text="Berita" />
       <div>AddArticle</div>
       <div className="flex flex-col mt-4 gap-3">
         <label className="mb-1 text-sm font-medium text-gray-700">Title</label>

@@ -46,8 +46,8 @@ useEffect(() => {
     document.getElementById(editor).innerHTML = konten
   }
   
-  const [judul, setTitle] = useState('');
-  const [konten, setContent] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setContent] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   
   const fileInputRef = useRef(null);
@@ -79,8 +79,8 @@ useEffect(() => {
 
   const handleSave = () => {
     const articleData = {
-      judul,
-      konten,
+      title,
+      description,
     };
     
     console.log(articleData)
@@ -112,7 +112,7 @@ useEffect(() => {
         type="text"
         className="border border-gray-300 p-2 mb-4 w-full"
         placeholder="Title"
-        defaultValue={judul}
+        defaultValue={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <div className="border border-gray-300 p-2 mb-4 flex">

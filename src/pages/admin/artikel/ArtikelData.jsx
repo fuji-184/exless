@@ -9,7 +9,7 @@ const ArtikelData = () => {
   const method = 'GET';
   const contentType = 'application/json';
   
-  const columns = ['judul', 'konten'];
+  const columns = ['title', 'description'];
   
   const handleViewLink = (id) => `/view/${id}`;
   const handleEditLink = (id) => `/data/artikel/edit/${id}`;
@@ -30,7 +30,7 @@ const ArtikelData = () => {
 
   return (
     <>
-      <PageTitle title="Data Artikel" />
+      <PageTitle title="Data Berita" />
       <div className="bg-white flex justify-between py-3 gap-2 px-4">
         <Link to="/data/artikel/add">
           <AddButton/>
