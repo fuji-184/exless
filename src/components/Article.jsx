@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 const Article = () => {
   
-  const { judul } = useParams()
+  const { title } = useParams()
   
   const [data, setData] = useState()
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ const Article = () => {
   
   const fetchData = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${judul}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${title}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
