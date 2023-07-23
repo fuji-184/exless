@@ -53,13 +53,15 @@ try {
   
 
   const handleSave = () => {
+    const newsUrl = `${import.meta.env.VITE_FRONTEND_URL}/${title}`};
     const articleData = {
       title,
       description,
-      imageUrl
+      imageUrl,
+      newsUrl
     };
     
-    console.log(articleData)
+    console.log(newsUrl)
 
     fetch(`${import.meta.env.VITE_BACKEND_URL}/artikel`, {
       method: 'POST',
@@ -141,6 +143,6 @@ try {
       </button>
     </div>
   );
-};
+;
 
 export default AddArtikel;
