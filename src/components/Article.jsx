@@ -11,6 +11,7 @@ const Article = () => {
   
   useEffect(()=>{
     fetchData()
+    console.log(title)
   }, [])
   
   useEffect(()=>{

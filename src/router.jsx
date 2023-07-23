@@ -82,7 +82,7 @@ const router = createBrowserRouter([
         element: <Community />,
       },
       {
-        path: "/:judul",
+        path: "/:title",
         element: <Article />,
       },
       {
