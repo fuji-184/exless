@@ -30,7 +30,10 @@ const Blog = () => {
       setData(newData);
     })
   }
-  
+  function parse(text) {
+    const doc = new DOMParser().parseFromString(text, "text/html");
+    return doc.body.textContent || "";
+  }
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -50,7 +53,7 @@ const Blog = () => {
           <div className="flex flex-col gap-y-[15px] py-28 " data-aos="fade-right">
             <img className="rounded-3xl w-[640px] h-[340px]" src={data[0].imageUrl} />
             <p className="text-[20px] font-bold text-justify text-[#252641]">{data[0].title}</p>
-            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten">{data[0].description}
+            <p className="text-[15px]  font-normal text-justify text-[#696984]" id="konten">{parse(data[0].description)}
           </p>
           <Link to={`/${data[0].title}`}>
             <button className="text-left">Read More</button>
@@ -79,7 +82,7 @@ const Blog = () => {
       <p className="text-[20px] font-bold text-justify text-[#252641]">
         {artikel.title}
       </p>
-      <p className="text-[15px] font-normal text-justify text-[#696984]" id="konten2">{data[0].description}</p>
+      <p className="text-[15px] font-normal text-justify text-[#696984]" id="konten2">{parse(data[0].description)}</p>
           <Link to={`/${artikel.title}`}>
       <button className="text-left">Read More</button>
       </Link>

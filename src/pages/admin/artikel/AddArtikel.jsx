@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
 const AddArtikel = () => {
+  const [content,setKonten] = useState('');
   const [title, setTitle] = useState('');
   const [description, setContent] = useState('');
   const [imageUrl, setThumbnail] = useState('');
@@ -54,7 +55,8 @@ const AddArtikel = () => {
       title,
       description,
       imageUrl,
-      newsUrl
+      newsUrl,
+      content
     };
     
     console.log(articleData);
@@ -79,9 +81,10 @@ const AddArtikel = () => {
     editorRef.current.focus();
     document.execCommand(format, false, null);
   };
-
+  
   return (
     <div className="p-4">
+      <label>Judul</label>
       <input
         type="text"
         className="border border-gray-300 p-2 mb-4 w-full"
@@ -89,12 +92,13 @@ const AddArtikel = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <label>ImageUrl</label>
+      <label>Thumbnail</label>
       <input
         type="file"
         accept="image/*"
         onChange={(e) => handleThumbnail(e.target.files[0])}
       />
+      <label>Berita</label>
       <div className="border border-gray-300 p-2 mb-4 flex">
         <div className="flex items-center">
           <button
@@ -128,12 +132,18 @@ const AddArtikel = () => {
         </div>
       </div>
       <div
-        className="border border-gray-300 p-2"
+        className="border border-gray-300 p-2 bg-white"
         contentEditable={true}
         ref={editorRef}
-        onInput={(e) => setContent(e.target.innerHTML)}
+        onInput={(e) => setKonten(e.target.innerHTML)}
       ></div>
-      
+      <label>Deskripsi</label>
+      <textarea
+        className="border border-gray-300 p-2 mb-4 w-full"
+        placeholder="Deskripsi"
+        value={description}
+        onChange={(e) => setContent(e.target.value)}
+      />
       <button className="bg-blue-500 text-white py-2 px-4 mt-4" onClick={handleSave}>
         Save
       </button>
