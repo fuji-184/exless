@@ -10,7 +10,7 @@ const Dashboard = () => {
         <div className="max-w-[1024px] bg-[#f5f5f5]">
             <div className="title flex flex-col mb-8">
                 <PageTitle title='Dashboard' />
-                <p>Halo, Admin <b>Jeki</b></p>
+                <p>Halo, Admin</p>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <Card link='account' icon={Akun} title='Account' />
