@@ -20,7 +20,7 @@ const Article = () => {
   
   const fetchData = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/${title}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/berita/${title}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

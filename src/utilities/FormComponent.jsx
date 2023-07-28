@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+import Loading from '../components/Loading';
 
 const FormComponent = ({ gambar, dataEdit, method, url, inputs, onSubmit, cekFile, contentType, token }) => {
   const [formData, setFormData] = useState({});
+  
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +35,8 @@ const FormComponent = ({ gambar, dataEdit, method, url, inputs, onSubmit, cekFil
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    setLoading(true)
 
     let requestOptions;
 
@@ -85,13 +92,42 @@ console.log('ada file selain gambar')
   
 
     fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        onSubmit(data);
-      })
-      .catch((error) => {
-        console.log('Error:', error);
-      });
+  .then((response) => {
+    if (!response.ok) {
+
+      throw new Error('Failed to fetch data');
+    }
+    return response.json();
+  })
+  .then((data) => {
+    
+    setLoading(false)
+
+    Swal.fire({
+      title: 'Sukses!',
+      text: 'Operasi berhasil',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
+
+   
+    onSubmit(data);
+    setFormData(null)
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+    
+    setLoading(false)
+    
+    Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi kesalahan',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
+    
+  });
+
       
       console.log('sukses')
       
@@ -131,7 +167,9 @@ console.log('ada file selain gambar')
           Submit
         </button>
       </div>
+       {loading && <Loading />}
     </form>
+    
   );
 };
 

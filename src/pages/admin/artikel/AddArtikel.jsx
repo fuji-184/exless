@@ -1,6 +1,10 @@
 import React, { useState, useRef } from 'react';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+import { useNavigate } from 'react-router-dom';
 
 const AddArtikel = () => {
+  const navigate = useNavigate();
   const [content,setKonten] = useState('');
   const [title, setTitle] = useState('');
   const [description, setContent] = useState('');
@@ -70,9 +74,22 @@ const AddArtikel = () => {
     })
       .then(response => response.json())
       .then(data => {
+      Swal.fire({
+      title: 'Sukses!',
+      text: 'Operasi berhasil',
+      icon: 'success',
+      confirmButtonText: 'Ok',
+    });
         console.log('Article saved:', data);
+        navigate(`/data/artikel`, { replace: true });
       })
       .catch(error => {
+      Swal.fire({
+      title: 'Gagal!',
+      text: 'Terjadi kesalahan',
+      icon: 'error',
+      confirmButtonText: 'Ok',
+    });
         console.error('Error saving article:', error);
       });
   };

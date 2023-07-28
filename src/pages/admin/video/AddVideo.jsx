@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormComponent from '../../../utilities/FormComponent';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../../../utilities/PageTitle';
 
 const AddVideo = () => {
+  
   const navigate = useNavigate();
 
   const handleSubmit = (data) => {
+    
+    
     console.log('Form Data:', data);
-   // navigate(`/dashboard/video`, { replace: true });
+    navigate(`/data/video`, { replace: true });
+   
   };
 
   const method = 'POST';

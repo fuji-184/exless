@@ -3,6 +3,17 @@ import { Link } from 'react-router-dom'
 
 const CommunityList = () => {
   
+  /* backup
+  
+    <button
+            onClick={() => join(localStorage.getItem('idUser'), community.id)}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Join
+          </button>
+          
+  */
+  
   const [ data, setData ] = useState([])
   
   useEffect(()=>{
@@ -62,15 +73,10 @@ const CommunityList = () => {
           />
           <h3 className="text-lg font-medium mb-2">{community.nama}</h3>
           <p className="text-gray-600 mb-4">{community.deskripsi}</p>
-          <button
-            onClick={() => join(localStorage.getItem('idUser'), community.id)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Join
-          </button>
+        
           <Link
             to={`/community/${community.id}`}
-            className="ml-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             View
           </Link>

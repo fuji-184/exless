@@ -24,9 +24,9 @@ const CommunityPage = () => {
   const [chatBaru, setNewMessage] = useState('');
 
   useEffect(() => {
-    if (!localStorage.getItem('userEmail')){
+   /* if (!localStorage.getItem('userEmail')){
     navigate(`/login`, { replace: true });
-    }
+    } */
     const messagesRef = ref(database, `/Community/${id}/Chat`);
 
     const handleData = (snapshot) => {

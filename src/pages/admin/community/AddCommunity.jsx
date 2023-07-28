@@ -8,7 +8,7 @@ const AddCommunity = () => {
 
   const handleSubmit = (data) => {
     console.log('Form Data:', data);
-   // navigate(`/dashboard/video`, { replace: true });
+      navigate(`/data/community`, { replace: true });
   };
 
   const method = 'POST';
