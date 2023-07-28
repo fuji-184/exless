@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PageTitle from '../../../utilities/PageTitle';
 import Table from '../../../utilities/Table';
 import AddButton from "../../../utilities/AddButton";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 const VideoData = () => {
   
@@ -33,18 +35,46 @@ const VideoData = () => {
   const handleEditLink = (judul) => `/data/video/edit/${judul}`;
   
   const handleDeleteLink = async (id) => {
-    try {
-      await fetch(`${import.meta.env.VITE_BACKEND_URL}/video/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          // authorization: token ? `${token}` : '',
-        }
-      })
-    } catch (err) {
-      console.log(err)
+  Swal.fire({
+    title: 'Anda yakin?',
+    text: 'Data akan dihapus permanen!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Ya, hapus!',
+    cancelButtonText: 'Batal',
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/video/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            // authorization: token ? `${token}` : '',
+          },
+        });
+
+        Swal.fire({
+          title: 'Sukses!',
+          text: 'Operasi berhasil',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
+        
+        window.location.reload()
+      } catch (err) {
+        Swal.fire({
+          title: 'Gagal!',
+          text: 'Terjadi kesalahan',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+        console.log(err);
+      }
     }
-  }
+  });
+};
 
   return (
     <>
