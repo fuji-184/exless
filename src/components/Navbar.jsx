@@ -73,6 +73,9 @@ const Navbar = () => {
             <Link to="/blog" className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
               Blog
             </Link>
+            <Link to="/video" className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
+              Video
+            </Link>
             <Link to="/community" className="text-black hover:text-[#F48C06] hover:bg-transparent block px-3 py-2 rounded-md text-lg font-medium">
               Community
             </Link>
